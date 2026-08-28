@@ -38,6 +38,16 @@ ROI: 90% cost reduction, 95% time savings, 100% replicable
 
 ## 📊 System Architecture
 
+### 方法論哲學（最上層）
+
+```
+底層模型持續進化，我們不重造巨人
+—— 用 VAD 看得更遠、VAC 站得更穩、AI to Agent 飛得更快
+（站在巨人肩膀上的「開源老鷹視野」）
+```
+
+### 七層工作流
+
 ```
 Enterprise Requirement / User Request
         ↓
@@ -63,6 +73,20 @@ Enterprise Requirement / User Request
     (降低重複成本 -90%)
         ↓
     ↺ Return to VAD (Continuous Optimization)
+```
+
+### 企業價值軸（最底層）
+
+```
+VAD          →  VAC          →  Agent        →  Verify       →  Knowledge
+降低溝通成本      降低學習成本      降低人工成本      降低錯誤成本      降低重複成本
+```
+
+**收斂為一句：**
+
+```
+企業導入 AI to Agent
+= 增效 × 提速 × 降學習曲線 × 降錯誤 × 降返工 × 可複製
 ```
 
 ---
