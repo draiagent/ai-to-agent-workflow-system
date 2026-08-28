@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ai-to-agent VERIFY + REVIEW checklist",
+  "version": "1.0",
+  "description": "機器可讀的驗收清單，對應 README 的第 5 層 VERIFY（五層客觀信號）與第 6 層 REVIEW（六個角度）。每次執行完 VAC 後逐項標記 pass/fail/na。",
+  "usage": "複製此檔為 <vac-id>-run-<n>.verify.json，逐項填 result 與 evidence；所有 blocking 項目必須為 pass 才算 done。",
+  "result_values": ["pass", "fail", "na", "pending"],
+  "verify": {
+    "description": "客觀信號驗證 — 不問『做完了嗎』，問『證據是什麼』",
+    "layers": [
+      {
+        "id": "logic",
+        "name": "Logic 邏輯",
+        "question": "內容本身站得住嗎？有沒有自相矛盾？",
+        "signals": [
+          "單元測試 / 型別檢查通過",
+          "推理無矛盾、前後一致",
+          "事實與數據來源正確"
+        ],
+        "evidence_example": "測試輸出、型別檢查 log、事實查核註記",
+        "blocking": true,
+        "result": "pending",
+        "evidence": ""
+      },
+      {
+        "id": "flow",
+        "name": "Flow 流程",
+        "question": "STEPS 全部完成了嗎？有沒有缺口？",
+        "signals": [
+          "每個 STEP 都有對應產出",
+          "沒有跳過的步驟",
+          "順序與 VAC 一致"
+        ],
+        "evidence_example": "步驟對照表、整合測試結果",
+        "blocking": true,
+        "result": "pending",
+        "evidence": ""
+      },
+      {
+        "id": "visual",
+        "name": "Visual / Format 視覺與格式",
+        "question": "外觀 / 格式符合 OUTPUT 規格與範例嗎？",
+        "signals": [
+          "格式符合 OUTPUT 指定（檔型、結構、長度）",
+          "與參考範例一致，無版面錯誤",
+          "命名與存放位置正確"
+        ],
+        "evidence_example": "截圖、回歸比對、Vision Judge 評分",
+        "blocking": true,
+        "result": "pending",
+        "evidence": ""
+      },
+      {
+        "id": "data",
+        "name": "Data 數據",
+        "question": "數字對嗎？計算驗算過嗎？",
+        "signals": [
+          "數值與計算獨立驗算一致",
+          "schema / 欄位驗證通過",
+          "來源可追溯"
+        ],
+        "evidence_example": "驗算表、schema 驗證輸出",
+        "blocking": true,
+        "result": "pending",
+        "evidence": ""
+      },
+      {
+        "id": "business",
+        "name": "Business 商業",
+        "question": "達成 GOAL 了嗎？符合 RULES 嗎？",
+        "signals": [
+          "GOAL 的『definition of done』全部滿足",
+          "沒有違反任何 RULES（成本 / 時程 / 合規）",
+          "關係人簽核"
+        ],
+        "evidence_example": "KPI 數據、簽核紀錄、客戶回饋",
+        "blocking": true,
+        "result": "pending",
+        "evidence": ""
+      }
+    ]
+  },
+  "review": {
+    "description": "多角度品質審視 — 用全新脈絡，抓自動測試漏掉的問題",
+    "perspectives": [
+      {
+        "id": "scope",
+        "name": "Scope 範圍",
+        "question": "我們改的正好是該改的東西嗎？",
+        "example_issue": "改了功能 A 卻弄壞功能 B",
+        "blocking": true,
+        "result": "pending",
+        "notes": ""
+      },
+      {
+        "id": "complexity",
+        "name": "Complexity 複雜度",
+        "question": "有沒有過度設計？",
+        "example_issue": "簡單問題套了三層抽象",
+        "blocking": false,
+        "result": "pending",
+        "notes": ""
+      },
+      {
+        "id": "security",
+        "name": "Security 安全",
+        "question": "有沒有漏洞或洩漏？",
+        "example_issue": "把憑證印到 console",
+        "blocking": true,
+        "result": "pending",
+        "notes": ""
+      },
+      {
+        "id": "edge_cases",
+        "name": "Edge Cases 邊界情況",
+        "question": "什麼情況會壞？條件改變會怎樣？",
+        "example_issue": "沒有資料時匯出直接失敗",
+        "blocking": false,
+        "result": "pending",
+        "notes": ""
+      },
+      {
+        "id": "consistency",
+        "name": "Consistency 一致性",
+        "question": "跟既有模式 / 風格一致嗎？",
+        "example_issue": "命名慣例與其他檔案不同",
+        "blocking": false,
+        "result": "pending",
+        "notes": ""
+      },
+      {
+        "id": "regressions",
+        "name": "Regressions 迴歸",
+        "question": "會不會弄壞別的東西？",
+        "example_issue": "更新的模組讓相依程式壞掉",
+        "blocking": true,
+        "result": "pending",
+        "notes": ""
+      }
+    ]
+  },
+  "signoff": {
+    "owner": "",
+    "date": "",
+    "decision": "pending",
+    "decision_values": ["approved", "changes-requested", "pending"]
+  }
+}
