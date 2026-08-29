@@ -54,6 +54,73 @@ VAD          →  VAC          →  Agent        →  Verify       →  Knowledg
 
 ---
 
+## 執行閉環與工具綁定
+
+七層在實際執行時收斂成一個帶工具綁定的閉環。Orchestrator 依任務把工作分派給
+專業 Agent，每支 Agent 綁定當代最好的工具；Verify 對 VAC 規格驗收，Reuse 把
+成功能力寫回企業 Know-how。
+
+```
+                 企業 KNOW-HOW
+                      │
+                      ↓
+             ┌────── VAD ──────┐
+             │ 讓需求被看見     │
+             │ 讓資料被看懂     │
+             │ 讓流程被理解     │
+             └────────┬────────┘
+                      ↓
+                     VAC
+             能力規格・執行方法
+             工具規則・驗收標準
+                      ↓
+                ORCHESTRATOR
+                      │
+         ┌────────────┼────────────┐
+         ↓            ↓            ↓
+      UI Agent     Data Agent   Process Agent
+         │            │            │
+       Figma       Flint Chart    Mermaid
+         │            │            │
+         └────────────┼────────────┘
+                      ↓
+                   VERIFY
+              結果是否符合規格？
+                      ↓
+                    REUSE
+               成功能力持續重用
+                      ↓
+                 KNOW-HOW ↑
+                      │
+                      └────── ↺
+```
+
+對應七層：VAD＝①、VAC＝②、ORCHESTRATOR＝③ ROUTE、三支 Agent＋工具＝④ EXECUTE、
+VERIFY＝⑤＋⑥、REUSE＝⑦ LEARN。工具（Figma／Flint／Mermaid …）是可替換的實作，
+換工具不動閉環。
+
+### 分層視角：上層一直換，底層持續累積
+
+```
+大模型持續升級   Claude / GPT / Gemini / ...   ↑ 一直換
+工具持續升級      Figma / Flint / Mermaid / ...  ↑ 一直換
+Agent 持續升級                                   ↑ 一直換
+════════════════════════════════════════════════
+企業能力治理層
+        │
+  VAD → VAC → VERIFY → REUSE → KNOW-HOW           ← 持續累積、不換
+════════════════════════════════════════════════
+```
+
+**核心主張：**
+
+> VAD 讓需求、資料與流程被看見；VAC 讓成功方法被保存；專業 Agent 負責執行；
+> Verify 確保正確；Reuse 讓企業能力持續複利。
+>
+> 模型會換、工具會換、Agent 會換；企業真正不能換掉的，是自己的 Know-how。
+
+---
+
 ## 迴圈為什麼會加速
 
 | 第 N 次 | 走哪幾層 | 模型層級 | 成本 / 時間（示意） |
