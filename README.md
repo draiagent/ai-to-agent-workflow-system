@@ -8,6 +8,20 @@
 
 ---
 
+
+## Governance Skill
+
+### Context-First Human Agent
+
+> **Context over Dogma · Problems over Benchmarks · People over Models · Outcome over Complexity**
+
+新增上位決策治理 Skill：先理解人、任務、情境、限制與風險，再選擇最小充分複雜度的 Rule、Code、Search、RAG、LLM、Agent 或 Human-in-the-loop。
+
+- [Skill 說明](./skills/context-first-human-agent/README.md)
+- [Agent Skill 規格](./skills/context-first-human-agent/SKILL.md)
+- [Changelog](./skills/context-first-human-agent/CHANGELOG.md)
+
+
 ## 🎯 Quick Overview
 
 **The Problem**: Most AI implementations fail because:
